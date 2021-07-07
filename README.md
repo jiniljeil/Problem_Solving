@@ -4,3 +4,4 @@
    - 6. Brute Force
    - 7. Divide and Conquer
    - 8. Dynamic Programming
+   - 10. Greedy
