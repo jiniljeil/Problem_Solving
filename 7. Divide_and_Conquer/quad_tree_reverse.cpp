@@ -1,10 +1,23 @@
 /*
-INPUT 
+Program: 쿼드 트리 뒤집기
+Explanation: 
+모든 픽셀이 검은 색 일 경우: b
+모든 픽셀이 흰색 일 경우: w
+모든 픽셀이 같은 색이 아닐 경우: x
+위 과정을 통해 압축된 쿼드 트리를 상하로 뒤집은 쿼드 트리 출력 
+
+INPUT:
 4
 w
 xbwwb
 xbwxwbbwb
 xxwwwbxwxwbbbwwxxxwwbbbwwwwbb
+
+Result:
+w
+xwbbw
+xxbwwbbbw
+xxwbxwwxbbwwbwbxwbwwxwwwxbbwb
 */
 
 #include <iostream>

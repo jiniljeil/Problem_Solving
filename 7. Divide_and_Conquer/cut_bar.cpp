@@ -40,7 +40,7 @@ int bruteForce(vector<int> h) {
 
 int cut_bars(vector<int> h, int left, int right) {
     if (left == right) return h[left]; 
-
+ 
     int mid = (left + right)/2; 
     // Divide 
     int ret = max(cut_bars(h, left, mid), cut_bars(h, mid+1, right)); 
