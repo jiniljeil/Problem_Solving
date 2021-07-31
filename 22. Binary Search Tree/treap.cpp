@@ -13,9 +13,12 @@ Binary Search Tree 에서 skewed 한 것을 막기 위해
 
 #include <iostream> 
 
-typedef int KeyType; 
 using namespace std; 
 
+typedef int KeyType; 
+int sortedArr[50000]; 
+int originArr[50000]; 
+int arrsize ;
 struct Node { 
     KeyType key; 
     // 이 노드의 우선 순위 (priority) 
@@ -31,12 +34,12 @@ struct Node {
         if(left) size += left->size;  
         if(right) size += right->size; 
     }
-}
+}; 
 
 typedef pair<Node*, Node*> NodePair ;
 
 // root 를 루트로 하는 트립을 key 미만의 값과 이상의 값을 갖는 두 개의 트립으로 분리 
-NodePair split(Node* root, keyType key) {
+NodePair split(Node* root, KeyType key) {
     if(root == NULL) return NodePair(NULL, NULL) ;
     
     //  루트가 key 미만이면 오른쪽 서브 트리를 쪼갠다. 
@@ -73,7 +76,7 @@ Node* insert(Node* root, Node* node) {
     return root; 
 }
 
-Node* marge(Node* a , Node* b) {
+Node* merge(Node* a , Node* b) {
     if (a == NULL) return b ;
     if (b == NULL) return a ;
     if(a->priority < b->priority) {
@@ -85,7 +88,7 @@ Node* marge(Node* a , Node* b) {
     }
 }
 
-Node* erase(Node *root, keyType key) {
+Node* erase(Node *root, KeyType key) {
     if (root == NULL) return root; 
 
     if(root->key == key) {
@@ -96,7 +99,7 @@ Node* erase(Node *root, keyType key) {
         if(key < root->key) {
             root->setLeft(erase(root->left, key)); 
         }else{
-            root->setright(erase(root->right, key)); 
+            root->setRight(erase(root->right, key)); 
         }
     }
     return root ;
@@ -106,11 +109,9 @@ Node* kth(Node* root, int k) {
     // 왼쪽 서브 트리 크기 계산 
     int leftSize = 0 ; 
     if(root->left != NULL) leftSize = root->left->size; 
-    if(k <= leftSize) {
-        return kth(root->left, k);
-    }else{
-        return kth(root->right, k - leftSize - 1) ;
-    }
+    if(k <= leftSize) return kth(root->left, k);
+    if(k == leftSize + 1) return root; 
+    return kth(root->right, k - leftSize -1 ); 
 }
 
 int countLessThan(Node* root, KeyType key) {
