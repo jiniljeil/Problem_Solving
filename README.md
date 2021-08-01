@@ -8,4 +8,5 @@
    - 18. Linear data structure
    - 19. Stack Queue
    - 20. String Search 
-   - 21. Tree
+   - 21. Tree 
+   - 22. Binary Search Tree
